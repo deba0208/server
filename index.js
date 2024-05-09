@@ -44,7 +44,7 @@ const currentDate = () => {
   const seconds = String(currentDate.getSeconds()).padStart(2, '0'); // Add leading zero if necessary
   const day = String(currentDate.getDate()).padStart(2, '0'); // Add leading zero if necessary
   const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Add leading zero if necessary (months are zero-based)
-  const year = String(currentDate.getFullYear()).substr(-2); // Get last two digits of year
+  const year = String(currentDate.getFullYear()); // Get last two digits of year
 
   // Create formatted date string
   const formattedDate = `${hours}:${minutes}:${seconds} ${day}:${month}:${year}`;
