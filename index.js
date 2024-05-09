@@ -33,47 +33,8 @@ const authentication = (req, res, next) => {
     res.json({ message: "authentication failed" });
   }
 }
-const component = (body) => {
-  const comp = body.split(",");
-  const newComps = {
-    co2: Number(comp[0]),
-    co: Number(comp[1]),
-    nh4: Number(comp[2]),
-    pm25: Number(comp[3]),
-    TVOC: Number(comp[4]),
-    AQI: Number(comp[5]),
-    Temperature: Number(comp[6]),
-    Humidity: Number(comp[7]),
-  }
-  return newComps;
-}
-// app.get("/data", (req, res) => {
-//   fs.readFile("new.json", "utf-8", (err, data) => {
-//     if (err) throw err;
-//     res.status(200).json(JSON.parse(data));
-//   });
-// });
 
-// app.post("/data", (req, res) => {
-//   {
-//     const creatNewEntry = {
-//       id: Math.floor(Math.random() * 1000000),
-//       date: req.body,
-//     };
-//     fs.readFile("new.json", "utf-8", (err, data) => {
-//       if (err) throw err;
-//       const entry = JSON.parse(data);
-//       entry.push(creatNewEntry);
-//       fs.writeFile("new.json ", JSON.stringify(entry), (err) => {
-//         if (err) throw err;
-//         res.send(creatNewEntry);
-//       });
-//     });
-//   } // else {
-//   //   res.send("Error");
-//   // }
-//   // Process the data as needed
-// });
+
 app.get("/data", async (req, res) => {
   try {
     const data = await Data.find();
