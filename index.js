@@ -48,6 +48,7 @@ app.get("/data", async (req, res) => {
 app.post("/data", async (req, res) => {
   try {
     const { co2, co, pm25, nh4, TVOC, AQI, Temperature, Humidity } = req.body;
+    console.log(req.body);
     const newEntry = new Data({ co2, co, pm25, nh4, TVOC, Temperature, Humidity });
 
     // console.log(req.body);
