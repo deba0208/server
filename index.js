@@ -19,14 +19,14 @@ mongoose.connect(`mongodb+srv://${username}:${password}@allcomponantvalue.226u6w
 
 }).then((result) => {
 
-  console.log("db connect");
+  // console.log("db connect");
 }).catch((err) => {
   console.log(err);
 });
 
 const authentication = (req, res, next) => {
   const auHeader = req.headers.authentication;
-  console.log(auHeader);
+  // console.log(auHeader);
   if (auHeader) {
     next();
   } else {
@@ -38,7 +38,7 @@ const authentication = (req, res, next) => {
 app.get("/data", async (req, res) => {
   try {
     const data = await Data.find();
-    console.log(data);
+    // console.log(data);
     res.json(data);
 
   } catch (error) {
