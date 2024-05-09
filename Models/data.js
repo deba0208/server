@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 
 const componentSchema = new mongoose.Schema({
 
+    time: {
+        type: String,
+        require: true
+    },
     co2: {
         type: Number,
         require: true

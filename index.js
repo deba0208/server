@@ -34,7 +34,24 @@ const authentication = (req, res, next) => {
   }
 }
 
+const currentDate = () => {
+  // Get current date
+  const currentDate = new Date();
 
+  // Get individual date components
+  const hours = String(currentDate.getHours()).padStart(2, '0'); // Add leading zero if necessary
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0'); // Add leading zero if necessary
+  const seconds = String(currentDate.getSeconds()).padStart(2, '0'); // Add leading zero if necessary
+  const day = String(currentDate.getDate()).padStart(2, '0'); // Add leading zero if necessary
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Add leading zero if necessary (months are zero-based)
+  const year = String(currentDate.getFullYear()).substr(-2); // Get last two digits of year
+
+  // Create formatted date string
+  const formattedDate = `${hours}:${minutes}:${seconds} ${day}:${month}:${year}`;
+
+  return formattedDate;
+
+}
 app.get("/data", async (req, res) => {
   try {
     const data = await Data.find();
@@ -48,8 +65,9 @@ app.get("/data", async (req, res) => {
 app.post("/data", async (req, res) => {
   try {
     const { co2, co, pm25, nh4, TVOC, AQI, Temperature, Humidity } = req.body;
-    console.log(req.body);
-    const newEntry = new Data({ co2, co, pm25, nh4, TVOC, Temperature, Humidity });
+    // console.log(req.body);
+    const time = currentDate();
+    const newEntry = new Data({ time, co2, co, pm25, nh4, TVOC, Temperature, Humidity });
 
     // console.log(req.body);
     // const value = component(req.body);
