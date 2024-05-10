@@ -27,7 +27,7 @@ mongoose.connect(`mongodb+srv://${username}:${password}@allcomponantvalue.226u6w
 const authentication = (req, res, next) => {
   const auHeader = req.headers.authentication;
   // console.log(auHeader);
-  if (auHeader) {
+  if (auHeader.split(" ")[1] === "123456789") {
     next();
   } else {
     res.json({ message: "authentication failed" });
