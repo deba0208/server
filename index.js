@@ -62,7 +62,7 @@ app.get("/data", async (req, res) => {
     res.status(500).send(error.message);
   }
 })
-app.post("/data", async (req, res) => {
+app.post("/data", authentication, async (req, res) => {
   try {
     const { co2, co, pm25, nh4, TVOC, AQI, Temperature, Humidity } = req.body;
     // console.log(req.body);
