@@ -49,7 +49,7 @@ const componentSchema = new mongoose.Schema({
 
 });
 
-const componentModel = mongoose.model("ComponentData", componentSchema);
+const componentModel = mongoose.model("datas", componentSchema);
 
 
 module.exports = componentModel; 
