@@ -3,3 +3,4 @@ package-lock.json
 collection.json
 data.json
 new.json
+.env
