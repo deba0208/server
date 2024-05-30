@@ -67,7 +67,8 @@ app.post("/data", async (req, res) => {
     const { co2, co, pm25, nh4, TVOC, AQI, Temperature, Humidity } = req.body;
     // console.log(req.body);
     const time = currentDate();
-    const newEntry = new Data({ time, co2, co, pm25, nh4, TVOC, AQI, Temperature, Humidity });
+    const nh3 = nh4 * 0.944;
+    const newEntry = new Data({ time, co2, co, pm25, nh3, TVOC, AQI, Temperature, Humidity });
 
     // console.log(req.body);
     // const value = component(req.body);
