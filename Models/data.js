@@ -25,7 +25,10 @@ const componentSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
-
+    IEI: {
+        type: Number,
+        require: true,
+    },
 
     AQI: {
         type: Number,
@@ -44,12 +47,15 @@ const componentSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
-
+    Room: {
+        type: String,
+        require: true
+    }
 
 
 });
 
-const componentModel = mongoose.model("datas", componentSchema);
+const componentModel = mongoose.model("data2", componentSchema);
 
 
 module.exports = componentModel; 
