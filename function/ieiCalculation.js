@@ -9,7 +9,7 @@ const iciCalculation = (Temperature, Humidity) => {
 
 const iapiCalculation = (co2, co, pm25, TVOC, nh3) => {
     const pm25Range = [0, 40]
-    const nh3Range = [0, 0.5]
+    const nh3Range = [0, 5]
     const coRange = [0, 9]
     const co2Range = [400, 1200]
     const tvocRange = [0, 1000]

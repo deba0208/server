@@ -21,7 +21,7 @@ const componentSchema = new mongoose.Schema({
         require: true
     },
 
-    nh4: {
+    nh3: {
         type: Number,
         require: true
     },
