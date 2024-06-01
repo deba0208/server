@@ -77,7 +77,7 @@ app.post("/data", async (req, res) => {
       AQI,
       Temperature,
       Humidity,
-      Room: "Room1"
+      Room: "Room2"
     });
 
     // console.log(req.body);
