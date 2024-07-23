@@ -21,7 +21,7 @@ passport.use(
             email: profile.emails[0].value,
             image: profile.photos[0].value,
           });
-
+          console.log("user");
           await user.save();
         }
 
