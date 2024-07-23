@@ -3,25 +3,23 @@ const passport = require("passport");
 const { componentModel } = require("../Models/data");
 
 passport.use(
-  new OAuth2Strategy(
+  new GoogleStrategy(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
-      scope: ["profile", "email"],
+      callbackURL: "http://localhost:3000/auth/google/callback", // Ensure HTTP is used here
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
         let user = await componentModel.findOne({ googleId: profile.id });
 
         if (!user) {
-          user = new userdb({
+          user = new componentModel({
             googleId: profile.id,
             displayName: profile.displayName,
             email: profile.emails[0].value,
             image: profile.photos[0].value,
           });
-          console.log("user");
           await user.save();
         }
 
@@ -32,10 +30,18 @@ passport.use(
     }
   )
 );
+
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.id);
 });
 
-passport.deserializeUser((user, done) => {
-  done(null, user);
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await componentModel.findById(id);
+    done(null, user);
+  } catch (error) {
+    done(error, null);
+  }
 });
+
+module.exports = passport;
